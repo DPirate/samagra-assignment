@@ -1,5 +1,5 @@
-import moment, { MomentInput } from 'moment';
-
+import moment from 'moment';
+import './ApiTimerAnalytics.css';
 export interface ITimerAnalyticsData {
   start: moment.Moment;
   end: moment.Moment;
@@ -8,20 +8,12 @@ export interface ITimerAnalyticsData {
 }
 
 export function ApiTimerAnalytics({ data }: { data?: ITimerAnalyticsData }) {
-  //TODO: remove inline styles
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        border: 'solid',
-        padding: 30,
-      }}>
-      <p>start: {data?.start?.format('hh:mm:ss')}</p>
-      <p>end: {data?.end?.format('hh:mm:ss')}</p>
-      <p>startSave: {data?.startSave?.format('hh:mm:ss')}</p>
-      <p>endSave: {data?.endSave?.format('hh:mm:ss')}</p>
+    <div className="api-call">
+      <span>start: {data?.start?.format('hh:mm:ss')}</span>
+      <span>end: {data?.end?.format('hh:mm:ss')}</span>
+      <span>startSave: {data?.startSave?.format('hh:mm:ss')}</span>
+      <span>endSave: {data?.endSave?.format('hh:mm:ss')}</span>
     </div>
   );
 }

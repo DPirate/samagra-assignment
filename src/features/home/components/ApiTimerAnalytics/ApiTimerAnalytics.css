@@ -1,0 +1,11 @@
+.api-call {
+  width: calc(50% - 2px);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 16px;
+  flex: 1;
+}
+.api-call:nth-child(odd) {
+  border-right: 1px solid black;
+}
