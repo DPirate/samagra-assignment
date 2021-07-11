@@ -1,6 +1,14 @@
 import { ParsedUrlQueryInput } from 'querystring';
 import { stringify } from 'querystring';
-import { API_URL } from './api.config';
+import { API_PATHS, API_URL } from './api.config';
+
+export interface IApiInput<TBody> {
+  path: keyof typeof API_PATHS;
+  body?: TBody;
+  query?: ParsedUrlQueryInput;
+  method: 'get' | 'post' | 'put' | 'patch' | 'delete';
+  baseUrl?: string;
+}
 
 export async function api<TResult, TBody>({
   path,
@@ -8,13 +16,7 @@ export async function api<TResult, TBody>({
   query = undefined,
   method,
   baseUrl = API_URL,
-}: {
-  path: string;
-  body?: TBody;
-  query?: ParsedUrlQueryInput;
-  method: 'get' | 'post' | 'put' | 'patch' | 'delete';
-  baseUrl?: string;
-}): Promise<TResult> {
+}: IApiInput<TBody>): Promise<TResult> {
   let token: boolean;
   // mock fetching auth token
   token = (() => false)();
