@@ -1,3 +1,5 @@
-export const Button = ({ title = 'Click Me!' }) => (
-  <button type="button">{title}</button>
+export const Button = ({ title = 'Click Me!', onClick = () => {} }) => (
+  <button type="button" onClick={onClick}>
+    {title}
+  </button>
 );
