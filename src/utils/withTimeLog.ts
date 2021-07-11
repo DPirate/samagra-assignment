@@ -1,8 +1,8 @@
 import moment, { MomentInput } from 'moment';
 
 export interface ITimedResponse {
-  start: MomentInput;
-  end: MomentInput;
+  start: moment.Moment;
+  end: moment.Moment;
   response: undefined;
 }
 
