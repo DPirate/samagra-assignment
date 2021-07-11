@@ -15,11 +15,13 @@ export function ApiTimerAnalytics({ data }: { data?: ITimerAnalyticsData }) {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        border: 'solid',
+        padding: 30,
       }}>
-      <p>start: {data?.start?.toLocaleString()}</p>
-      <p>end: {data?.end?.toLocaleString()}</p>
-      <p>startSave: {data?.startSave?.toLocaleString()}</p>
-      <p>endSave: {data?.endSave?.toLocaleString()}</p>
+      <p>start: {data?.start?.format('hh:mm:ss')}</p>
+      <p>end: {data?.end?.format('hh:mm:ss')}</p>
+      <p>startSave: {data?.startSave?.format('hh:mm:ss')}</p>
+      <p>endSave: {data?.endSave?.format('hh:mm:ss')}</p>
     </div>
   );
 }
