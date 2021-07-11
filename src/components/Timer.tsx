@@ -10,7 +10,7 @@ export function Timer() {
 
   return (
     <div>
-      <p>{time.toLocaleString()}</p>
+      <p>{time.format('hh:mm:ss')}</p>
     </div>
   );
 }
