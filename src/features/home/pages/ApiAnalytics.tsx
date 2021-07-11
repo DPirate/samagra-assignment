@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { apiSaveWithTimeLog } from '../../../api/api';
 import { Button } from '../../../components';
 import { Timer } from '../../../components/Timer';
-
+import './ApiAnalytics.css';
 import {
   ApiTimerAnalytics,
   ITimerAnalyticsData,
@@ -57,13 +57,27 @@ export function ApiAnalytics() {
   }
 
   return (
-    <div>
-      <ApiTimerAnalytics data={todosLog} />
-      <ApiTimerAnalytics data={commentsLog} />
-      <ApiTimerAnalytics data={photosLog} />
-      <ApiTimerAnalytics data={postsLog} />
-      <Button title="Get Todos" onClick={getTodosTimeLog} />
-      <Timer />
+    <div className="container">
+      {/* header */}
+      <div className="header">Test app</div>
+      {/* api logs section */}
+      <div className="api-calls">
+        <ApiTimerAnalytics data={todosLog} />
+        <ApiTimerAnalytics data={commentsLog} />
+      </div>
+      <div className="api-calls">
+        <ApiTimerAnalytics data={photosLog} />
+        <ApiTimerAnalytics data={postsLog} />
+      </div>
+      {/* buttons  */}
+      <div className="buttons">
+        <Button title="Get Todos" onClick={getTodosTimeLog} />
+        <Button title="Get Comments" onClick={getCommentsTimeLog} />
+        <Button title="Get Photos" onClick={getPhotosTimeLog} />
+        <Button title="Get Posts" onClick={getPostsTimeLog} />
+
+        <Timer />
+      </div>
     </div>
   );
 }
