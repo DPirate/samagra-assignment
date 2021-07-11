@@ -4,6 +4,6 @@ import { API_PATHS, QueryKeys } from '../../api/api.config';
 
 export function useAppGetCommentsQuery() {
   return useQuery(QueryKeys.GetComments, () => {
-    return api({ path: API_PATHS.Comments, method: 'get' });
+    return api({ path: 'Comments', method: 'get' });
   });
 }

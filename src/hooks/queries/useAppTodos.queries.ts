@@ -1,8 +1,9 @@
-import moment from 'moment';
+import { set } from 'idb-keyval';
 import { useQuery } from 'react-query';
 import { api } from '../../api/api';
 import { API_PATHS, QueryKeys } from '../../api/api.config';
 import { ITimerAnalyticsData } from '../../features/home/components/ApiTimerAnalytics';
+import { DbKeys } from '../../store/indexedDb.config';
 import { withTimeLog } from '../../utils';
 
 export function useAppGetTodosQuery() {
@@ -11,17 +12,13 @@ export function useAppGetTodosQuery() {
       start,
       end,
       response: apiResponse,
-    } = await withTimeLog(() => api({ path: API_PATHS.Todos, method: 'get' }));
+    } = await withTimeLog(() => api({ path: 'Todos', method: 'get' }));
 
     const {
       start: startSave,
       end: endSave,
       response: dbReponse,
-    } = {
-      start: moment(),
-      end: moment(),
-      response: 'dummy',
-    };
+    } = await withTimeLog(() => set(DbKeys.Todos, apiResponse));
 
     return {
       start,

@@ -4,6 +4,6 @@ import { API_PATHS, QueryKeys } from '../../api/api.config';
 
 export function useAppGetPostsQuery() {
   return useQuery(QueryKeys.GetPosts, () => {
-    return api({ path: API_PATHS.Posts, method: 'get' });
+    return api({ path: 'Posts', method: 'get' });
   });
 }

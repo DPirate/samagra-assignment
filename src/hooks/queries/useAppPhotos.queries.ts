@@ -4,6 +4,6 @@ import { API_PATHS, QueryKeys } from '../../api/api.config';
 
 export function useAppGetPhotosQuery() {
   return useQuery(QueryKeys.GetPhotos, () => {
-    return api({ path: API_PATHS.Photos, method: 'get' });
+    return api({ path: 'Photos', method: 'get' });
   });
 }
