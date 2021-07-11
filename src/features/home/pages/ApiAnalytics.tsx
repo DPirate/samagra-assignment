@@ -5,6 +5,7 @@ import {
   useAppGetPostsQuery,
   useAppGetTodosQuery,
 } from '../../../hooks/queries';
+import { ApiTimerAnalytics } from '../components/ApiTimerAnalytics';
 
 export function ApiAnalytics() {
   const { data: todosData } = useAppGetTodosQuery();
@@ -14,6 +15,7 @@ export function ApiAnalytics() {
   console.log(photosData);
   return (
     <div>
+      <ApiTimerAnalytics data={todosData} />
       <Button title="Get All" />
     </div>
   );
