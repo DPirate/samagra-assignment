@@ -1,5 +1,8 @@
+import { set } from 'idb-keyval';
 import { ParsedUrlQueryInput } from 'querystring';
 import { stringify } from 'querystring';
+import { DbKeys } from '../store/indexedDb.config';
+import { withTimeLog } from '../utils';
 import { API_PATHS, API_URL } from './api.config';
 
 export interface IApiInput<TBody> {
@@ -47,4 +50,29 @@ export async function api<TResult, TBody>({
   } catch (error) {
     return error;
   }
+}
+
+export async function apiSaveWithTimeLog({
+  method,
+  path,
+  dbKey,
+}: IApiInput<unknown> & { dbKey: keyof typeof DbKeys }) {
+  const {
+    start,
+    end,
+    response: apiResponse,
+  } = await withTimeLog(() => api({ path, method }));
+
+  const {
+    start: startSave,
+    end: endSave,
+    response: dbReponse,
+  } = await withTimeLog(() => set(dbKey, apiResponse));
+
+  return {
+    start,
+    end,
+    endSave,
+    startSave,
+  };
 }
