@@ -1,11 +1,15 @@
 import { Button } from '../../../components';
-import { useAppGetTodosQuery } from '../../../hooks/queries';
-import { useAppGetCommentsQuery } from '../../../hooks/queries/useAppComment.queries';
+import {
+  useAppGetCommentsQuery,
+  useAppGetPhotosQuery,
+  useAppGetTodosQuery,
+} from '../../../hooks/queries';
 
 export function ApiAnalytics() {
   const { data: todosData } = useAppGetTodosQuery();
   const { data: commentsData } = useAppGetCommentsQuery();
-  console.log(commentsData);
+  const { data: photosData } = useAppGetPhotosQuery();
+  console.log(photosData);
   return (
     <div>
       <Button title="Get All" />
