@@ -1,11 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import { Button } from './components';
+import { ApiAnalytics } from './features/home/pages';
+import { QueryClient, QueryClientProvider } from 'react-query';
+const queryClient = new QueryClient();
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -18,7 +21,10 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+      <QueryClientProvider client={queryClient}>
+        <ApiAnalytics />
+      </QueryClientProvider>
     </div>
   );
 }
